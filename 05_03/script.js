@@ -11,9 +11,20 @@ function initMap() {
 		'scrollwheel' : false,
 	});
 
+	var popupContent = 'H+ Sports Los Angeles<br>';
+		popupContent += '1750 Vine Street<br>';
+		popupContent += 'Los Angeles, CA';
+
+	var infowindow = new google.maps.InfoWindow({
+		content: popupContent
+	  });
+
 	var marker = new google.maps.Marker({
 		'position' : storeLocation,
 		'map' : map,
-		'title' : 'H+ Sport in Los Angeles'
+		'title' : 'H+ Sport in Los Angeles',
+	  });
+	marker.addListener('click', function() {
+		infowindow.open(map, marker);
 	  });
 }
